@@ -8,6 +8,8 @@ import { Button } from "@/components/ui/button"
 export function NavBar() {
   const [isOpen, setIsOpen] = useState(false)
 
+  const primaryColor = "hsl(var(--primary))"
+
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-white">
       <div className="container mx-auto px-4">
@@ -18,27 +20,31 @@ export function NavBar() {
               alt="English World Logo"
               className="h-10 w-auto"
             />
-            <span className="text-xl font-bold text-primary">English World</span>
+            <span className="text-xl font-bold" style={{ color: primaryColor }}>
+              English World
+            </span>
           </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex md:space-x-4 lg:space-x-6">
-            <Link href="/" className="text-sm font-medium hover:text-primary font-medium transition-colors">
-              Inicio
-            </Link>
-            <Link href="/about" className="text-sm font-medium hover:text-primary font-medium transition-colors">
-              Quiénes Somos
-            </Link>
-            <Link href="/niveles" className="text-sm font-medium hover:text-primary font-medium transition-colors">
-              Niveles
-            </Link>
-            <Link href="/exams" className="text-sm font-medium hover:text-primary font-medium transition-colors">
-              Exámenes
-            </Link>
-
-            <Link href="/contact" className="text-sm font-medium hover:text-primary font-medium transition-colors">
-              Contáctanos
-            </Link>
+            {[
+              { href: "/", label: "Inicio" },
+              { href: "/about", label: "Quiénes Somos" },
+              { href: "/niveles", label: "Niveles" },
+              { href: "/exams", label: "Exámenes" },
+              { href: "/contact", label: "Contáctanos" },
+            ].map(({ href, label }) => (
+              <Link
+                key={href}
+                href={href}
+                className="text-sm font-medium transition-colors"
+                style={{ color: primaryColor }}
+                onMouseEnter={e => (e.currentTarget.style.color = "hsl(210, 90%, 30%)")}
+                onMouseLeave={e => (e.currentTarget.style.color = primaryColor)}
+              >
+                {label}
+              </Link>
+            ))}
           </nav>
 
           {/* Mobile Navigation Button */}
@@ -52,41 +58,25 @@ export function NavBar() {
         {isOpen && (
           <div className="md:hidden">
             <div className="space-y-1 pb-3 pt-2">
-              <Link
-                href="/"
-                className="block px-3 py-2 text-base font-medium hover:bg-gray-50"
-                onClick={() => setIsOpen(false)}
-              >
-                Inicio
-              </Link>
-              <Link
-                href="/about"
-                className="block px-3 py-2 text-base font-medium hover:bg-gray-50"
-                onClick={() => setIsOpen(false)}
-              >
-                Quiénes Somos
-              </Link>
-              <Link
-                href="/niveles"
-                className="block px-3 py-2 text-base font-medium hover:bg-gray-50"
-                onClick={() => setIsOpen(false)}
-              >
-                Niveles
-              </Link>
-              <Link
-                href="/exams"
-                className="block px-3 py-2 text-base font-medium hover:bg-gray-50"
-                onClick={() => setIsOpen(false)}
-              >
-                Exámenes
-              </Link>
-              <Link
-                href="/contact"
-                className="block px-3 py-2 text-base font-medium hover:bg-gray-50"
-                onClick={() => setIsOpen(false)}
-              >
-                Contáctanos
-              </Link>
+              {[
+                { href: "/", label: "Inicio" },
+                { href: "/about", label: "Quiénes Somos" },
+                { href: "/niveles", label: "Niveles" },
+                { href: "/exams", label: "Exámenes" },
+                { href: "/contact", label: "Contáctanos" },
+              ].map(({ href, label }) => (
+                <Link
+                  key={href}
+                  href={href}
+                  className="block px-3 py-2 text-base font-medium hover:bg-gray-50"
+                  onClick={() => setIsOpen(false)}
+                  style={{ color: primaryColor }}
+                  onMouseEnter={e => (e.currentTarget.style.color = "hsl(210, 90%, 30%)")}
+                  onMouseLeave={e => (e.currentTarget.style.color = primaryColor)}
+                >
+                  {label}
+                </Link>
+              ))}
             </div>
           </div>
         )}
@@ -94,4 +84,3 @@ export function NavBar() {
     </header>
   )
 }
-

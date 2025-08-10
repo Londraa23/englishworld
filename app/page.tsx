@@ -6,12 +6,8 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import {
   GraduationCap,
   Calendar,
-  PartyPopperIcon as Party,
-  MessageCircle,
   Star,
   Award,
-  BookOpen,
-  Users,
 } from "lucide-react"
 
 export default function Home() {
@@ -62,13 +58,13 @@ export default function Home() {
       <section className="py-16 md:py-24">
         <div className="container mx-auto px-4">
           <h2 className="mb-12 text-center text-3xl font-bold">¿Por qué elegirnos?</h2>
-          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 justify-center">
             {[
-              { icon: GraduationCap, title: "Profesores Cualificados", description: "Nativos y bilingues certificados con amplia experiencia en enseñanza." },
+              { icon: GraduationCap, title: "Profesores Cualificados", description: "Nativos y certificados con amplia experiencia en enseñanza." },
               { icon: Calendar, title: "Horarios Flexibles", description: "Grupos reducidos en diferentes horarios para tu comodidad." },
               { icon: Award, title: "Centro Oficial Cambridge", description: "Preparación especializada para exámenes oficiales." },
             ].map((item, index) => (
-              <Card key={index} className="hover-card">
+              <Card key={index} className="hover-card max-w-sm w-full">
                 <CardContent className="flex flex-col items-center p-6 text-center">
                   <div className="mb-4 rounded-full bg-primary/10 p-3">
                     <item.icon className="h-6 w-6 text-primary" />
@@ -110,7 +106,6 @@ export default function Home() {
           </Carousel>
         </div>
       </section>
-
 
       {/* Certifications Section */}
       <section className="py-16 bg-gray-50">
