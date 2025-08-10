@@ -32,15 +32,11 @@ export function NavBar() {
             <Link href="/niveles" className="text-sm font-medium hover:text-primary font-medium transition-colors">
               Niveles
             </Link>
-            <Link href="/events" className="text-sm font-medium hover:text-primary font-medium transition-colors">
-              Eventos
-            </Link>
+
             <Link href="/exams" className="text-sm font-medium hover:text-primary font-medium transition-colors">
               Exámenes
             </Link>
-            <Link href="/precios" className="text-sm font-medium hover:text-primary font-medium transition-colors">
-              Precios
-            </Link>
+
             <Link href="/contact" className="text-sm font-medium hover:text-primary font-medium transition-colors">
               Contáctanos
             </Link>

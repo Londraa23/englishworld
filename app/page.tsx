@@ -183,11 +183,6 @@ export default function Home() {
               </Card>
             ))}
           </div>
-          <div className="mt-8 text-center">
-            <Button asChild variant="outline">
-              <Link href="/blog">Ver todas las noticias</Link>
-            </Button>
-          </div>
         </div>
       </section>
 
