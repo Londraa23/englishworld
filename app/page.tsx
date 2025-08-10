@@ -6,8 +6,12 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import {
   GraduationCap,
   Calendar,
+  PartyPopperIcon as Party,
+  MessageCircle,
   Star,
   Award,
+  BookOpen,
+  Users,
 } from "lucide-react"
 
 export default function Home() {
@@ -58,7 +62,7 @@ export default function Home() {
       <section className="py-16 md:py-24">
         <div className="container mx-auto px-4">
           <h2 className="mb-12 text-center text-3xl font-bold">¿Por qué elegirnos?</h2>
-          <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 justify-center">
+          <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 justify-items-center">
             {[
               { icon: GraduationCap, title: "Profesores Cualificados", description: "Nativos y certificados con amplia experiencia en enseñanza." },
               { icon: Calendar, title: "Horarios Flexibles", description: "Grupos reducidos en diferentes horarios para tu comodidad." },
