@@ -94,39 +94,65 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* Instalaciones Section */}
-        <section className="mb-16">
-          <h2 className="mb-8 text-3xl font-bold">Nuestras Instalaciones</h2>
-          <div className="grid gap-8 md:grid-cols-2">
-            <div className="space-y-4">
-              <p className="text-lg text-muted-foreground">
-                Contamos con instalaciones modernas y completamente equipadas para garantizar la mejor experiencia de
-                aprendizaje:
-              </p>
-              <ul className="space-y-3">
-                <li className="flex items-center gap-2">
-                  <School className="h-5 w-5 text-primary" />
-                  <span>Aulas climatizadas con tecnología multimedia</span>
-                </li>
-                <li className="flex items-center gap-2">
-                  <Clock className="h-5 w-5 text-primary" />
-                  <span>Sala de estudio disponible fuera del horario de clases</span>
-                </li>
-                <li className="flex items-center gap-2">
-                  <Target className="h-5 w-5 text-primary" />
-                  <span>Biblioteca con recursos para todos los niveles</span>
-                </li>
-              </ul>
-            </div>
-            <Card className="overflow-hidden">
-              <img
-                src="/fuera_academia.webp"
-                alt="Instalaciones de English World"
-                className="h-[600px] w-full object-cover"
-              />
-            </Card>
-          </div>
-        </section>
+{/* Instalaciones Section */}
+<section className="mb-16">
+  <h2 className="mb-8 text-3xl font-bold">Nuestras Instalaciones</h2>
+  <div className="grid gap-8 md:grid-cols-2">
+    <div className="space-y-4">
+      <p className="text-lg text-muted-foreground">
+        Contamos con instalaciones modernas y completamente equipadas para garantizar la mejor experiencia de
+        aprendizaje:
+      </p>
+      <ul className="space-y-3">
+        <li className="flex items-center gap-2">
+          <School className="h-5 w-5 text-primary" />
+          <span>Aulas climatizadas con tecnología multimedia</span>
+        </li>
+        <li className="flex items-center gap-2">
+          <Clock className="h-5 w-5 text-primary" />
+          <span>Sala de estudio disponible fuera del horario de clases</span>
+        </li>
+        <li className="flex items-center gap-2">
+          <Target className="h-5 w-5 text-primary" />
+          <span>Biblioteca con recursos para todos los niveles</span>
+        </li>
+      </ul>
+    </div>
+    
+    {/* Grid de imágenes */}
+    <div className="grid grid-cols-2 gap-4">
+      <Card className="overflow-hidden">
+        <img
+          src="/header.png"
+          alt="Fachada de English World"
+          className="h-48 w-full object-cover"
+        />
+      </Card>
+      <Card className="overflow-hidden">
+        <img
+          src="/clase_r.png"
+          alt="Aula principal"
+          className="h-48 w-full object-cover"
+        />
+      </Card>
+      <Card className="overflow-hidden">
+        <img
+          src="/clase_m.png"
+          alt="Segunda clase"
+          className="h-48 w-full object-cover"
+        />
+      </Card>
+      <Card className="overflow-hidden">
+        <img
+          src="/header_der.png"
+          alt="Sala de estar"
+          className="h-48 w-full object-cover"
+        />
+      </Card>
+    </div>
+  </div>
+</section>
+
 
         {/* CTA Section */}
         <section className="rounded-2xl bg-gradient-to-r from-primary to-primary/80 p-8 text-white md:p-12">

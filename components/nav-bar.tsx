@@ -32,7 +32,6 @@ export function NavBar() {
             <Link href="/niveles" className="text-sm font-medium hover:text-primary font-medium transition-colors">
               Niveles
             </Link>
-
             <Link href="/exams" className="text-sm font-medium hover:text-primary font-medium transition-colors">
               Exámenes
             </Link>
@@ -75,25 +74,11 @@ export function NavBar() {
                 Niveles
               </Link>
               <Link
-                href="/events"
-                className="block px-3 py-2 text-base font-medium hover:bg-gray-50"
-                onClick={() => setIsOpen(false)}
-              >
-                Eventos
-              </Link>
-              <Link
                 href="/exams"
                 className="block px-3 py-2 text-base font-medium hover:bg-gray-50"
                 onClick={() => setIsOpen(false)}
               >
                 Exámenes
-              </Link>
-              <Link
-                href="/precios"
-                className="block px-3 py-2 text-base font-medium hover:bg-gray-50"
-                onClick={() => setIsOpen(false)}
-              >
-                Precios
               </Link>
               <Link
                 href="/contact"
