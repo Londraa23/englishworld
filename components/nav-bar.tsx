@@ -25,6 +25,8 @@ export function NavBar() {
             </span>
           </Link>
 
+
+        
           {/* Desktop Navigation */}
           <nav className="hidden md:flex md:space-x-4 lg:space-x-6">
             {[
