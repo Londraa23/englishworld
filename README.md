@@ -20,7 +20,7 @@ Se han usado tecnologías modernas: HTML5, CSS3, TypeScript, Node.js, módulos `
 
 ## 🚀 Instalación / Uso
 1. Clonar el repositorio:  
-```git clone https://github.com/tu-usuario/english-world-web.git```
+```git clone https://github.com/Londraa23/english-world-web.git```
 
 2. Instalar dependencias (Node.js / npm):
 
