@@ -1,0 +1,167 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+/* Satoshi font from Fontshare */
+@font-face {
+  font-family: 'Satoshi';
+  src: url('https://api.fontshare.com/v2/css?f[]=satoshi@600,700&display=swap');
+  font-weight: 600 700;
+  font-display: swap;
+}
+
+:root {
+  /* English World Brand Colors */
+  --color-navy: #002868;
+  --color-red: #CF142B;
+  --color-sky: #5B9BD5;
+  --color-gold: #C8A225;
+  --color-cream: #FBF5E6;
+  --color-sand: #E8DCC8;
+  --color-night: #0A0F2C;
+
+  /* Shadcn tokens mapped to brand */
+  --background: var(--color-cream);
+  --foreground: var(--color-navy);
+  --card: #ffffff;
+  --card-foreground: var(--color-navy);
+  --popover: #ffffff;
+  --popover-foreground: var(--color-navy);
+  --primary: var(--color-red);
+  --primary-foreground: #ffffff;
+  --secondary: var(--color-sky);
+  --secondary-foreground: #ffffff;
+  --muted: var(--color-sand);
+  --muted-foreground: var(--color-navy);
+  --accent: var(--color-gold);
+  --accent-foreground: var(--color-navy);
+  --destructive: #dc2626;
+  --destructive-foreground: #ffffff;
+  --border: var(--color-navy);
+  --input: var(--color-sand);
+  --ring: var(--color-sky);
+  --radius: 0.625rem;
+}
+
+@theme inline {
+  --font-sans: 'Satoshi', 'DM Sans', system-ui, sans-serif;
+  --font-body: 'DM Sans', system-ui, sans-serif;
+  --font-mono: 'DM Mono', 'Geist Mono', monospace;
+  
+  /* Brand colors */
+  --color-navy: #002868;
+  --color-red: #CF142B;
+  --color-sky: #5B9BD5;
+  --color-gold: #C8A225;
+  --color-cream: #FBF5E6;
+  --color-sand: #E8DCC8;
+  --color-night: #0A0F2C;
+  
+  /* Semantic tokens */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-cream text-navy;
+  }
+  
+  html {
+  }
+}
+
+/* Custom utility classes for typography */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .font-satoshi {
+    font-family: 'Satoshi', system-ui, sans-serif;
+  }
+  
+  .font-dm-sans {
+    font-family: 'DM Sans', system-ui, sans-serif;
+  }
+  
+  .font-dm-mono {
+    font-family: 'DM Mono', monospace;
+  }
+  
+  .tracking-tight-apple {
+    letter-spacing: -0.02em;
+  }
+  
+  .leading-display {
+    line-height: 1.1;
+  }
+  
+  .leading-body {
+    line-height: 1.6;
+  }
+}
+
+/* Noise texture overlay */
+.noise-overlay {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  opacity: 0.04;
+}
+
+/* Diagonal stripes pattern */
+.diagonal-stripes {
+  background-image: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 23px,
+    rgba(0, 40, 104, 0.06) 23px,
+    rgba(0, 40, 104, 0.06) 24px
+  );
+}
+
+/* Dot grid pattern */
+.dot-grid {
+  background-image: radial-gradient(circle, rgba(0, 40, 104, 0.03) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Thin scrollbar for lead form */
+.scrollbar-thin {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 40, 104, 0.15) transparent;
+}
+.scrollbar-thin::-webkit-scrollbar {
+  width: 4px;
+}
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: transparent;
+}
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 40, 104, 0.15);
+  border-radius: 20px;
+}
