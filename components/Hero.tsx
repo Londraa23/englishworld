@@ -245,7 +245,7 @@ export function Hero() {
   return (
     <section
       id="inicio"
-      className="relative min-h-screen bg-night overflow-hidden"
+      className="relative min-h-screen bg-night overflow-hidden flex flex-col"
     >
       {/* Background Layer */}
       <motion.div 
@@ -255,10 +255,9 @@ export function Hero() {
         <div className="absolute inset-0 noise-overlay pointer-events-none" />
       </motion.div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 pt-32 pb-24 md:pt-40 md:pb-32">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 pt-24 pb-16 md:pt-28 md:pb-20 flex-1 flex flex-col justify-center">
         <div className={`
           ${isMobile ? "flex flex-col items-center text-center" : "grid lg:grid-cols-[1.2fr_1fr] gap-12 lg:gap-8 items-center"}
-          min-h-[70vh]
         `}>
           {/* Right column - Globe (Only on Desktop) */}
           {!isMobile && (
@@ -292,21 +291,21 @@ export function Hero() {
               <motion.h1
                 variants={itemVariants}
                 className="mt-8 font-satoshi font-bold text-white tracking-tight-apple leading-display"
-                style={{ fontSize: "clamp(3rem, 8vw, 7rem)" }}
+                style={{ fontSize: "clamp(2.5rem, 6vw, 5.5rem)" }}
               >
                 Tu futuro
               </motion.h1>
               <motion.h1
                 variants={itemVariants}
                 className="font-satoshi font-bold text-white tracking-tight-apple leading-display"
-                style={{ fontSize: "clamp(3rem, 8vw, 7rem)" }}
+                style={{ fontSize: "clamp(2.5rem, 6vw, 5.5rem)" }}
               >
                 comienza
               </motion.h1>
               <motion.h1
                 variants={itemVariants}
                 className="font-satoshi font-bold text-red tracking-tight-apple leading-display"
-                style={{ fontSize: "clamp(3rem, 8vw, 7rem)" }}
+                style={{ fontSize: "clamp(2.5rem, 6vw, 5.5rem)" }}
               >
                 aquí.
               </motion.h1>
