@@ -1,5 +1,6 @@
 export const organizationJsonLd = {
-  "@type": "EducationalOrganization",
+  "@id": "https://academiaenglishworld.com/#organization",
+  "@type": ["EducationalOrganization", "LocalBusiness"],
   name: "English World",
   url: "https://academiaenglishworld.com",
   image: "https://academiaenglishworld.com/logo.png",

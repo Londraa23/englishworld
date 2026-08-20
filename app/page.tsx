@@ -8,6 +8,7 @@ import { Testimonials } from "@/components/Testimonials"
 import { FAQ } from "@/components/FAQ"
 import { FinalCTA } from "@/components/FinalCTA"
 import { Footer } from "@/components/Footer"
+import { organizationJsonLd } from "@/lib/organization"
 
 export const metadata = {
   title: "English World | Academia de Inglés en Zaragoza",
@@ -35,19 +36,7 @@ export const metadata = {
 export default function Home() {
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": "English World",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Calle Celso Emilio Ferreiro 17",
-      "addressLocality": "Zaragoza",
-      "postalCode": "50017",
-      "addressCountry": "ES"
-    },
-    "telephone": "+34 651 85 99 39",
-    "url": "https://academiaenglishworld.com",
-    "openingHours": "Mo-Fr 09:00-21:00",
-    "image": "https://academiaenglishworld.com/logo.png"
+    ...organizationJsonLd,
   }
 
   return (

@@ -99,7 +99,7 @@ function AnimatedGlobe({
                   key={angle}
                   cx="200"
                   cy="200"
-                  rx={150 * Math.cos((angle * Math.PI) / 180)}
+                  rx={Math.abs(150 * Math.cos((angle * Math.PI) / 180))}
                   ry="150"
                   fill="none"
                   stroke="#5B9BD5"
@@ -189,12 +189,10 @@ function WaveDivider() {
 }
 
 export function Hero() {
-  const [mounted, setMounted] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
   const { scrollY } = useScroll()
 
   useEffect(() => {
-    setMounted(true)
     const checkMobile = () => setIsMobile(window.innerWidth < 768)
     checkMobile()
     window.addEventListener("resize", checkMobile)
@@ -237,10 +235,6 @@ export function Hero() {
     "Grupos máx. 10",
     "Cambridge Official",
   ]
-
-  if (!mounted) return (
-    <section className="relative min-h-screen bg-night overflow-hidden" />
-  )
 
   return (
     <section
@@ -290,24 +284,12 @@ export function Hero() {
               </motion.div>
               <motion.h1
                 variants={itemVariants}
-                className="mt-8 font-satoshi font-bold text-white tracking-tight-apple leading-display"
+                className="mt-8 font-satoshi font-bold tracking-tight-apple leading-display"
                 style={{ fontSize: "clamp(2.5rem, 6vw, 5.5rem)" }}
               >
-                Tu futuro
-              </motion.h1>
-              <motion.h1
-                variants={itemVariants}
-                className="font-satoshi font-bold text-white tracking-tight-apple leading-display"
-                style={{ fontSize: "clamp(2.5rem, 6vw, 5.5rem)" }}
-              >
-                comienza
-              </motion.h1>
-              <motion.h1
-                variants={itemVariants}
-                className="font-satoshi font-bold text-red tracking-tight-apple leading-display"
-                style={{ fontSize: "clamp(2.5rem, 6vw, 5.5rem)" }}
-              >
-                aquí.
+                <span className="block text-white">Tu futuro</span>
+                <span className="block text-white">comienza</span>
+                <span className="block text-red">aquí.</span>
               </motion.h1>
             </motion.div>
 

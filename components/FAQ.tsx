@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { motion, AnimatePresence } from "framer-motion"
+import { motion } from "framer-motion"
 import * as Accordion from "@radix-ui/react-accordion"
 import { ChevronDown } from "lucide-react"
 
@@ -69,23 +69,18 @@ function AccordionItem({
         </Accordion.Trigger>
       </Accordion.Header>
       
-      <AnimatePresence>
-        {isOpen && (
-          <Accordion.Content forceMount asChild>
-            <motion.div
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: "auto", opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
-              transition={{ duration: 0.3, ease: "easeInOut" }}
-              className="overflow-hidden"
-            >
-              <p className="pb-6 font-dm-sans text-white/70 text-base max-w-2xl leading-body">
-                {item.answer}
-              </p>
-            </motion.div>
-          </Accordion.Content>
-        )}
-      </AnimatePresence>
+      <Accordion.Content forceMount asChild>
+        <motion.div
+          initial={false}
+          animate={{ height: isOpen ? "auto" : 0, opacity: isOpen ? 1 : 0 }}
+          transition={{ duration: 0.3, ease: "easeInOut" }}
+          className="overflow-hidden"
+        >
+          <p className="pb-6 font-dm-sans text-white/70 text-base max-w-2xl leading-body">
+            {item.answer}
+          </p>
+        </motion.div>
+      </Accordion.Content>
     </Accordion.Item>
   )
 }
