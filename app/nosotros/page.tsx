@@ -4,6 +4,7 @@ import { Footer } from "@/components/Footer"
 import { NosotrosHero } from "@/components/NosotrosHero"
 import { StorySection } from "@/components/StorySection"
 import { TeamSection } from "@/components/TeamSection"
+import { FacilitiesSection } from "@/components/FacilitiesSection"
 import { ValuesSection } from "@/components/ValuesSection"
 import { NosotrosCTA } from "@/components/NosotrosCTA"
 import { organizationJsonLd } from "@/lib/organization"
@@ -50,6 +51,7 @@ export default function NosotrosPage() {
         <NosotrosHero />
         <StorySection />
         <TeamSection />
+        <FacilitiesSection />
         <ValuesSection />
         <NosotrosCTA />
       </PageTransition>
