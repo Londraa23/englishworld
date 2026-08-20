@@ -160,6 +160,17 @@ export function LeadForm() {
   /* ── Main Form ── */
   return (
     <div className="w-full max-w-md mx-auto px-4">
+      {/* Urgency banner */}
+      <div className="mb-4 flex items-center gap-2.5 bg-red/10 border border-red/20 rounded-2xl px-4 py-2.5">
+        <span className="relative flex h-2 w-2 shrink-0">
+          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red opacity-75" />
+          <span className="relative inline-flex rounded-full h-2 w-2 bg-red" />
+        </span>
+        <p className="font-dm-sans text-xs sm:text-[13px] text-red font-semibold leading-snug">
+          Plazas limitadas para el curso 2026-27 · Matrícula con descuento hasta el 15 de septiembre
+        </p>
+      </div>
+
       {/* Card wrapper */}
       <div className="bg-white rounded-3xl shadow-lg shadow-navy/5 border border-sand/60 p-5 sm:p-6">
 
