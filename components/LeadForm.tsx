@@ -236,7 +236,7 @@ export function LeadForm() {
                       <input
                         id="lead-nombre" type="text" placeholder="Ej: María García"
                         value={formData.nombre} onChange={(e) => update("nombre", e.target.value)}
-                        className={`w-full bg-cream/40 pl-10 pr-3 py-3 rounded-xl font-dm-sans text-sm text-navy
+                        className={`w-full bg-cream/40 pl-10 pr-3 py-3 rounded-xl font-dm-sans text-base text-navy
                           border transition-colors duration-200 focus:outline-none placeholder:text-navy/20
                           ${errors.nombre ? "border-red/40 bg-red/5" : "border-sand focus:border-sky"}`}
                       />
@@ -253,7 +253,7 @@ export function LeadForm() {
                       <input
                         id="lead-telefono" type="tel" placeholder="Ej: 612 345 678"
                         value={formData.telefono} onChange={(e) => update("telefono", e.target.value)}
-                        className={`w-full bg-cream/40 pl-10 pr-3 py-3 rounded-xl font-dm-sans text-sm text-navy
+                        className={`w-full bg-cream/40 pl-10 pr-3 py-3 rounded-xl font-dm-sans text-base text-navy
                           border transition-colors duration-200 focus:outline-none placeholder:text-navy/20
                           ${errors.telefono ? "border-red/40 bg-red/5" : "border-sand focus:border-sky"}`}
                       />
