@@ -65,6 +65,7 @@ export function LeadForm() {
   const [currentStep, setCurrentStep] = useState(0)
   const [direction, setDirection] = useState(0)
   const [submitted, setSubmitted] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
   const [errors, setErrors] = useState<Record<string, string>>({})
 
   useEffect(() => {
@@ -96,19 +97,23 @@ export function LeadForm() {
   const nextStep = () => { if (!validateStep()) return; setDirection(1); setCurrentStep((s) => Math.min(s + 1, steps.length - 1)) }
   const prevStep = () => { setDirection(-1); setCurrentStep((s) => Math.max(s - 1, 0)) }
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (!validateStep()) return
-    const lines = [
-      `🎓 *Nuevo lead - English World*`, ``,
-      `👤 *Nombre:* ${formData.nombre}`,
-      `📱 *Teléfono:* ${formData.telefono}`,
-      `📚 *¿Ha estudiado inglés?:* ${formData.haEstudiadoIngles === "si" ? "Sí" : "No"}`,
-    ]
-    if (formData.haEstudiadoIngles === "si") {
-      lines.push(`📊 *Nivel:* ${niveles.find((n) => n.value === formData.nivel)?.label || formData.nivel}`)
+    setIsSubmitting(true)
+    try {
+      const res = await fetch("/api/lead", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      })
+      if (!res.ok) throw new Error("Request failed")
+      setSubmitted(true)
+    } catch (err) {
+      console.error("Error saving lead", err)
+      setErrors({ submit: "No se pudo enviar. Inténtalo de nuevo." })
+    } finally {
+      setIsSubmitting(false)
     }
-    window.open(`https://wa.me/34651859939?text=${encodeURIComponent(lines.join("\n"))}`, "_blank")
-    setSubmitted(true)
   }
 
   /* ── Error helper ── */
@@ -349,16 +354,17 @@ export function LeadForm() {
               <ChevronRight className="w-4 h-4" />
             </motion.button>
           ) : (
-            <motion.button whileTap={{ scale: 0.97 }} onClick={handleSubmit}
+            <motion.button whileTap={{ scale: 0.97 }} onClick={handleSubmit} disabled={isSubmitting}
               className="flex-1 flex items-center justify-center gap-1.5 py-3 rounded-xl
-                bg-red text-white font-satoshi font-bold text-sm
+                bg-red text-white font-satoshi font-bold text-sm disabled:opacity-60
                 shadow-lg shadow-red/15 transition-colors duration-200 hover:bg-red/90 active:bg-red/80"
             >
-              Enviar por WhatsApp
-              <ArrowRight className="w-4 h-4" />
+              {isSubmitting ? "Enviando..." : "Enviar solicitud"}
+              {!isSubmitting && <ArrowRight className="w-4 h-4" />}
             </motion.button>
           )}
         </div>
+        <FieldError field="submit" />
 
       </div>
 
