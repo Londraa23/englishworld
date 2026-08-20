@@ -48,7 +48,7 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json({ ok: true })
   } catch (err) {
-    console.error("Error saving lead to Google Sheets", err)
+    console.error("Error saving form submission to Google Sheets", err)
     return NextResponse.json({ error: "Error interno" }, { status: 500 })
   }
 }
