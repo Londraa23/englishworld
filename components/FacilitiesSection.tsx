@@ -17,7 +17,7 @@ const photos = [
     span: "",
   },
   {
-    src: "/header_der.png",
+    src: "/recepcion.png",
     alt: "Recepción y sala de espera de English World",
     caption: "Zona de recepción",
     span: "",
