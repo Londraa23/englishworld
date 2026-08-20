@@ -3,6 +3,7 @@ import { DM_Sans, DM_Mono } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import { ScrollToTop } from '@/components/ScrollToTop'
 import { EnrollmentPopup } from '@/components/EnrollmentPopup'
+import { MetaPixel } from '@/components/MetaPixel'
 import './globals.css'
 
 const dmSans = DM_Sans({ 
@@ -53,6 +54,7 @@ export default function RootLayout({
         <link rel="apple-touch-icon" href="/apple-icon.png" />
       </head>
       <body className="font-dm-sans antialiased">
+        <MetaPixel />
         <ScrollToTop />
         {children}
         <EnrollmentPopup />
