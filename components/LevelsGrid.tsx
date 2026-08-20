@@ -6,7 +6,7 @@ import { CheckCircle } from "lucide-react"
 const levels = [
   {
     level: "A2",
-    name: "Key English Test",
+    name: "A2 Key (antes KET)",
     title: "Los primeros pasos del viaje.",
     desc: "Aprende a presentarte, hablar de tu día a día y entender conversaciones simples.",
     skills: ["Vocabulario esencial", "Gramática básica", "Conversación cotidiana"],
@@ -16,7 +16,7 @@ const levels = [
   },
   {
     level: "B1",
-    name: "Preliminary English",
+    name: "B1 Preliminary (antes PET)",
     title: "Ya te defiendes. Ahora expándete.",
     desc: "Habla de experiencias, planes y opiniones con confianza creciente.",
     skills: ["Narrar experiencias", "Escribir textos simples", "Escucha activa"],
@@ -26,7 +26,7 @@ const levels = [
   },
   {
     level: "B2",
-    name: "First Certificate (FCE)",
+    name: "B2 First (antes FCE)",
     title: "El nivel que abre puertas.",
     desc: "Debatir, opinar, escribir ensayos y moverte en entornos internacionales.",
     skills: ["Debate y argumentación", "Escritura avanzada", "Comprensión compleja"],
@@ -37,7 +37,7 @@ const levels = [
   },
   {
     level: "C1",
-    name: "Advanced (CAE)",
+    name: "C1 Advanced (antes CAE)",
     title: "Casi nativo.",
     desc: "Comunicación fluida en entornos académicos y profesionales de alto nivel.",
     skills: ["Registro formal e informal", "Análisis crítico", "Presentaciones"],
@@ -47,7 +47,7 @@ const levels = [
   },
   {
     level: "C2",
-    name: "Proficiency (CPE)",
+    name: "C2 Proficiency (antes CPE)",
     title: "La cima.",
     desc: "Dominio total del idioma en cualquier contexto. El nivel más exigente y reconocido del mundo.",
     skills: ["Dominio nativo", "Literatura y matices", "Máxima certificación"],
@@ -134,6 +134,10 @@ export function LevelsGrid() {
                   </span>
                 ))}
               </div>
+
+              <p className="font-dm-sans text-xs opacity-50 mt-4">
+                Curso completo octubre–junio · 2–3 sesiones semanales de 90 minutos · también intensivos de verano
+              </p>
             </motion.div>
           ))}
         </div>

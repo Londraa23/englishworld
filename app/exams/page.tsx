@@ -23,6 +23,15 @@ const examsJsonLd = exams.map((e) => ({
   inLanguage: "en",
   educationalLevel: e.level,
   provider: organizationJsonLd,
+  hasCourseInstance: {
+    "@type": "CourseInstance",
+    courseMode: "Onsite",
+    location: {
+      "@type": "Place",
+      name: "English World",
+      address: organizationJsonLd.address,
+    },
+  },
 }))
 
 export const metadata = {

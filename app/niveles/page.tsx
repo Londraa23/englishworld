@@ -8,11 +8,11 @@ import { NivelesCTA } from "@/components/NivelesCTA"
 import { organizationJsonLd } from "@/lib/organization"
 
 const levels = [
-  { level: "A2", name: "Key English Test (KET)", desc: "Aprende a presentarte, hablar de tu día a día y entender conversaciones simples." },
-  { level: "B1", name: "Preliminary English Test (PET)", desc: "Habla de experiencias, planes y opiniones con confianza creciente." },
-  { level: "B2", name: "First Certificate in English (FCE)", desc: "Debatir, opinar, escribir ensayos y moverte en entornos internacionales." },
-  { level: "C1", name: "Certificate in Advanced English (CAE)", desc: "Comunicación fluida en entornos académicos y profesionales de alto nivel." },
-  { level: "C2", name: "Certificate of Proficiency in English (CPE)", desc: "Dominio total del idioma en cualquier contexto." },
+  { level: "A2", name: "A2 Key (antes KET)", desc: "Aprende a presentarte, hablar de tu día a día y entender conversaciones simples." },
+  { level: "B1", name: "B1 Preliminary (antes PET)", desc: "Habla de experiencias, planes y opiniones con confianza creciente." },
+  { level: "B2", name: "B2 First (antes FCE)", desc: "Debatir, opinar, escribir ensayos y moverte en entornos internacionales." },
+  { level: "C1", name: "C1 Advanced (antes CAE)", desc: "Comunicación fluida en entornos académicos y profesionales de alto nivel." },
+  { level: "C2", name: "C2 Proficiency (antes CPE)", desc: "Dominio total del idioma en cualquier contexto." },
 ]
 
 const coursesJsonLd = levels.map((l) => ({
@@ -23,6 +23,15 @@ const coursesJsonLd = levels.map((l) => ({
   inLanguage: "en",
   educationalLevel: l.level,
   provider: organizationJsonLd,
+  hasCourseInstance: {
+    "@type": "CourseInstance",
+    courseMode: "Onsite",
+    location: {
+      "@type": "Place",
+      name: "English World",
+      address: organizationJsonLd.address,
+    },
+  },
 }))
 
 export const metadata = {
