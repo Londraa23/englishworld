@@ -21,7 +21,7 @@ const dmMono = DM_Mono({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://academiaenglishworld.com'),
+  metadataBase: new URL('https://www.academiaenglishworld.com'),
   title: 'English World | Academia de Inglés en Zaragoza',
   description: 'Centro Oficial Cambridge en Zaragoza. Aprende inglés con profesores nativos y certificados. Grupos reducidos, horarios flexibles y preparación oficial Cambridge desde A2 hasta C2.',
   keywords: ['academia inglés zaragoza', 'cambridge zaragoza', 'cursos inglés', 'profesores nativos', 'exámenes cambridge'],

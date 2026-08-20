@@ -4,7 +4,7 @@ export const metadata = {
   title: "Política de Privacidad | English World Zaragoza",
   description: "Cómo tratamos tus datos personales en English World, academia de inglés en Zaragoza.",
   alternates: {
-    canonical: "https://academiaenglishworld.com/privacidad",
+    canonical: "https://www.academiaenglishworld.com/privacidad",
   },
   robots: {
     index: true,

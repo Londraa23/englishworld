@@ -4,7 +4,7 @@ export const metadata = {
   title: "Aviso Legal | English World Zaragoza",
   description: "Información legal del titular de la web de English World, academia de inglés en Zaragoza.",
   alternates: {
-    canonical: "https://academiaenglishworld.com/aviso-legal",
+    canonical: "https://www.academiaenglishworld.com/aviso-legal",
   },
   robots: {
     index: true,

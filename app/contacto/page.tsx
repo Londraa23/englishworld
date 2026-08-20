@@ -10,12 +10,12 @@ export const metadata = {
   title: "Contacto | English World Academia de Inglés Zaragoza",
   description: "Contacta con English World en Zaragoza. Estamos en Calle Celso Emilio Ferreiro 17. Escríbenos o llámanos para resolver tus dudas sobre cursos de inglés y exámenes Cambridge.",
   alternates: {
-    canonical: "https://academiaenglishworld.com/contacto",
+    canonical: "https://www.academiaenglishworld.com/contacto",
   },
   openGraph: {
     title: "Contacto | English World Academia de Inglés Zaragoza",
     description: "Contacta con English World en Zaragoza. Resolvemos tus dudas en menos de 24h.",
-    url: "https://academiaenglishworld.com/contacto",
+    url: "https://www.academiaenglishworld.com/contacto",
     siteName: "English World",
     images: [
       {

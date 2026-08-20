@@ -13,12 +13,12 @@ export const metadata = {
   title: "Quiénes Somos | English World Zaragoza",
   description: "Conoce a nuestro equipo de profesores nativos. Más de 10 años formando a las nuevas generaciones de Zaragoza con pasión y compromiso.",
   alternates: {
-    canonical: "https://academiaenglishworld.com/nosotros",
+    canonical: "https://www.academiaenglishworld.com/nosotros",
   },
   openGraph: {
     title: "Quiénes Somos | English World Zaragoza",
     description: "Conoce a nuestro equipo de profesores nativos y nuestra historia en Zaragoza.",
-    url: "https://academiaenglishworld.com/nosotros",
+    url: "https://www.academiaenglishworld.com/nosotros",
     siteName: "English World",
     images: [
       {

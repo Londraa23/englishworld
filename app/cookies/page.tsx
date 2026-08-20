@@ -4,7 +4,7 @@ export const metadata = {
   title: "Política de Cookies | English World Zaragoza",
   description: "Qué cookies y tecnologías similares utiliza la web de English World.",
   alternates: {
-    canonical: "https://academiaenglishworld.com/cookies",
+    canonical: "https://www.academiaenglishworld.com/cookies",
   },
   robots: {
     index: true,

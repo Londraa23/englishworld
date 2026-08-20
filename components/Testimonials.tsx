@@ -5,27 +5,7 @@ import useEmblaCarousel from "embla-carousel-react"
 import Autoplay from "embla-carousel-autoplay"
 import { motion } from "framer-motion"
 import { ChevronLeft, ChevronRight, Star } from "lucide-react"
-
-const testimonials = [
-  {
-    name: "Pablo E.",
-    initials: "PE",
-    bgColor: "bg-navy",
-    quote: "Estoy muy contento con mi experiencia en Academia English World. Las clases son dinámicas y personalizadas, lo que me ha permitido mejorar mi inglés rápidamente. Los profesores son muy cercanos y siempre dispuestos a ayudar. Si buscas un lugar donde aprender inglés de forma efectiva y divertida, ¡este es el sitio!",
-  },
-  {
-    name: "Ángela",
-    initials: "A",
-    bgColor: "bg-red",
-    quote: "Es muy buena academia de inglés, las profesoras (especialmente Rebecca) son muy amables y profesionales. Te pueden preparar para el nivel de inglés que desees.",
-  },
-  {
-    name: "Ana N.",
-    initials: "AN",
-    bgColor: "bg-sky",
-    quote: "Impresionante academia, enseñanza asombrosa, perfecto lugar para aprender inglés, además de la maravillosa persona que imparte este idioma. Una persona super paciente, que dará todo por que consigas el nivel que deseas. Gracias por todo Rebeca.",
-  },
-]
+import { testimonialsData } from "@/lib/testimonials"
 
 export function Testimonials() {
   const [emblaRef, emblaApi] = useEmblaCarousel(
@@ -93,7 +73,7 @@ export function Testimonials() {
         <div className="relative">
           <div ref={emblaRef} className="overflow-hidden py-10 -my-10">
             <div className="flex">
-              {testimonials.map((testimonial, index) => (
+              {testimonialsData.map((testimonial, index) => (
                 <div
                   key={index}
                   className="flex-[0_0_100%] min-w-0 px-4 md:px-8"
@@ -209,7 +189,7 @@ export function Testimonials() {
 
         {/* Dot indicators */}
         <div className="flex justify-center gap-2 mt-8">
-          {testimonials.map((_, index) => (
+          {testimonialsData.map((_, index) => (
             <button
               key={index}
               onClick={() => scrollTo(index)}

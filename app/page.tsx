@@ -9,17 +9,18 @@ import { FAQ } from "@/components/FAQ"
 import { FinalCTA } from "@/components/FinalCTA"
 import { Footer } from "@/components/Footer"
 import { organizationJsonLd } from "@/lib/organization"
+import { testimonialsData } from "@/lib/testimonials"
 
 export const metadata = {
   title: "English World | Academia de Inglés en Zaragoza",
   description: "Centro Oficial Cambridge en Zaragoza. Aprende inglés con profesores nativos y certificados. Grupos reducidos, horarios flexibles y preparación oficial Cambridge desde A2 hasta C2.",
   alternates: {
-    canonical: "https://academiaenglishworld.com",
+    canonical: "https://www.academiaenglishworld.com",
   },
   openGraph: {
     title: "English World | Academia de Inglés en Zaragoza",
     description: "Centro Oficial Cambridge en Zaragoza. Profesores nativos, grupos reducidos y certificación oficial.",
-    url: "https://academiaenglishworld.com",
+    url: "https://www.academiaenglishworld.com",
     siteName: "English World",
     images: [
       {
@@ -37,6 +38,19 @@ export default function Home() {
   const jsonLd = {
     "@context": "https://schema.org",
     ...organizationJsonLd,
+    review: testimonialsData.map((t) => ({
+      "@type": "Review",
+      reviewRating: {
+        "@type": "Rating",
+        ratingValue: "5",
+        bestRating: "5",
+      },
+      author: {
+        "@type": "Person",
+        name: t.name,
+      },
+      reviewBody: t.quote,
+    })),
   }
 
   return (

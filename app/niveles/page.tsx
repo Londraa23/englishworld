@@ -29,12 +29,12 @@ export const metadata = {
   title: "Niveles de Inglés A2–C2 | English World",
   description: "Cursos de inglés para todos los niveles: A2, B1, B2, C1 y C2. Encuentra tu grupo perfecto y mejora tu fluidez con profesores nativos.",
   alternates: {
-    canonical: "https://academiaenglishworld.com/niveles",
+    canonical: "https://www.academiaenglishworld.com/niveles",
   },
   openGraph: {
     title: "Niveles de Inglés A2–C2 | English World",
     description: "Cursos de inglés para todos los niveles en Zaragoza. A2, B1, B2, C1 y C2.",
-    url: "https://academiaenglishworld.com/niveles",
+    url: "https://www.academiaenglishworld.com/niveles",
     siteName: "English World",
     images: [
       {

@@ -1,17 +1,25 @@
 export const organizationJsonLd = {
-  "@id": "https://academiaenglishworld.com/#organization",
+  "@id": "https://www.academiaenglishworld.com/#organization",
   "@type": ["EducationalOrganization", "LocalBusiness"],
   name: "English World",
-  url: "https://academiaenglishworld.com",
-  image: "https://academiaenglishworld.com/logo.png",
+  url: "https://www.academiaenglishworld.com",
+  image: "https://www.academiaenglishworld.com/logo.png",
   telephone: "+34 651 85 99 39",
   email: "contacto@academiaenglishworld.com",
   address: {
     "@type": "PostalAddress",
     streetAddress: "Calle Celso Emilio Ferreiro 17",
     addressLocality: "Zaragoza",
+    addressRegion: "Zaragoza",
     postalCode: "50017",
     addressCountry: "ES",
   },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: 41.65,
+    longitude: -0.88746,
+  },
+  hasMap: "https://www.google.com/maps?cid=7969821074634968875",
+  sameAs: ["https://www.google.com/maps?cid=7969821074634968875"],
   openingHours: "Mo-Fr 09:00-21:00",
 }

@@ -29,12 +29,12 @@ export const metadata = {
   title: "Exámenes Cambridge | Centro Oficial | English World",
   description: "Prepara tus exámenes oficiales Cambridge (A2, B1, B2, C1, C2) con English World. Somos Centro Preparador Oficial en Zaragoza con examinadores nativos.",
   alternates: {
-    canonical: "https://academiaenglishworld.com/exams",
+    canonical: "https://www.academiaenglishworld.com/exams",
   },
   openGraph: {
     title: "Exámenes Cambridge | Centro Oficial | English World",
     description: "Prepara tus exámenes oficiales Cambridge en Zaragoza. Centro Preparador Oficial.",
-    url: "https://academiaenglishworld.com/exams",
+    url: "https://www.academiaenglishworld.com/exams",
     siteName: "English World",
     images: [
       {
