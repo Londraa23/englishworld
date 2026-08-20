@@ -106,11 +106,12 @@ export function LeadForm() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       })
-      if (!res.ok) throw new Error("Request failed")
+      if (!res.ok) throw new Error(`Request failed (${res.status})`)
       setSubmitted(true)
     } catch (err) {
       console.error("Error saving lead", err)
-      setErrors({ submit: "No se pudo enviar. Inténtalo de nuevo." })
+      const detail = err instanceof Error ? err.message : String(err)
+      setErrors({ submit: `No se pudo enviar. Inténtalo de nuevo. [${detail}]` })
     } finally {
       setIsSubmitting(false)
     }
