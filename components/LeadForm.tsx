@@ -166,7 +166,7 @@ export function LeadForm() {
           <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red opacity-75" />
           <span className="relative inline-flex rounded-full h-2 w-2 bg-red" />
         </span>
-        <p className="font-dm-sans text-xs sm:text-[13px] text-red font-semibold leading-snug">
+        <p className="font-dm-sans text-xs sm:text-[13px] text-red leading-snug">
           Plazas limitadas para el curso 2026-27 · Matrícula con descuento hasta el 15 de septiembre
         </p>
       </div>
