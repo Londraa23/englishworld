@@ -22,7 +22,6 @@ interface FormData {
   telefono: string
   haEstudiadoIngles: "si" | "no" | ""
   nivel: string
-  anosEstudiando: string
 }
 
 const initialFormData: FormData = {
@@ -30,7 +29,6 @@ const initialFormData: FormData = {
   telefono: "",
   haEstudiadoIngles: "",
   nivel: "",
-  anosEstudiando: "",
 }
 
 /* ─────────────────────── Step Config ─────────────────────── */
@@ -49,14 +47,6 @@ const niveles = [
   { value: "c1", label: "C1", desc: "Avanzado" },
   { value: "c2", label: "C2", desc: "Dominio" },
   { value: "nosabe", label: "No lo sé", desc: "Necesito prueba de nivel" },
-]
-
-const anosOpciones = [
-  { value: "menos-1", label: "Menos de 1 año" },
-  { value: "1-3", label: "1 – 3 años" },
-  { value: "3-5", label: "3 – 5 años" },
-  { value: "5-10", label: "5 – 10 años" },
-  { value: "mas-10", label: "Más de 10 años" },
 ]
 
 /* ─────────────────────── Animation ─────────────────────── */
@@ -116,7 +106,6 @@ export function LeadForm() {
     ]
     if (formData.haEstudiadoIngles === "si") {
       lines.push(`📊 *Nivel:* ${niveles.find((n) => n.value === formData.nivel)?.label || formData.nivel}`)
-      lines.push(`⏳ *Años estudiando:* ${anosOpciones.find((a) => a.value === formData.anosEstudiando)?.label || formData.anosEstudiando}`)
     }
     window.open(`https://wa.me/34651859939?text=${encodeURIComponent(lines.join("\n"))}`, "_blank")
     setSubmitted(true)
@@ -284,7 +273,7 @@ export function LeadForm() {
                     <div className="grid grid-cols-2 gap-2">
                       {(["si", "no"] as const).map((opt) => (
                         <motion.button key={opt} whileTap={{ scale: 0.97 }}
-                          onClick={() => { update("haEstudiadoIngles", opt); if (opt === "no") { update("nivel", ""); update("anosEstudiando", "") } }}
+                          onClick={() => { update("haEstudiadoIngles", opt); if (opt === "no") { update("nivel", "") } }}
                           className={`py-3 rounded-xl font-satoshi font-semibold text-sm transition-all duration-200 border
                             ${formData.haEstudiadoIngles === opt
                               ? "bg-navy text-white border-navy shadow-md shadow-navy/15"
@@ -326,27 +315,6 @@ export function LeadForm() {
                             ))}
                           </div>
                           <FieldError field="nivel" />
-                        </div>
-
-                        {/* Años */}
-                        <div>
-                          <label className="block font-dm-sans text-xs text-navy/60 font-medium mb-2">
-                            ¿Cuánto tiempo llevas?
-                          </label>
-                          <div className="flex flex-wrap gap-1.5">
-                            {anosOpciones.map((a) => (
-                              <motion.button key={a.value} whileTap={{ scale: 0.97 }}
-                                onClick={() => update("anosEstudiando", a.value)}
-                                className={`px-3 py-2 rounded-lg text-xs font-dm-sans transition-all duration-200 border
-                                  ${formData.anosEstudiando === a.value
-                                    ? "bg-sky/10 border-sky text-navy font-medium"
-                                    : "bg-cream/40 border-sand hover:border-navy/15 text-navy/60"}`}
-                              >
-                                {a.label}
-                              </motion.button>
-                            ))}
-                          </div>
-                          <FieldError field="anosEstudiando" />
                         </div>
                       </motion.div>
                     )}
