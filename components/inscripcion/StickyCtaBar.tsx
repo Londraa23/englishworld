@@ -8,6 +8,7 @@ const HERO_SCROLL_THRESHOLD = 420
 export function StickyCtaBar({ targetId = "quiz-form" }: { targetId?: string }) {
   const [pastHero, setPastHero] = useState(false)
   const [formVisible, setFormVisible] = useState(false)
+  const [submitted, setSubmitted] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => setPastHero(window.scrollY > HERO_SCROLL_THRESHOLD)
@@ -27,7 +28,13 @@ export function StickyCtaBar({ targetId = "quiz-form" }: { targetId?: string }) 
     return () => observer.disconnect()
   }, [targetId])
 
-  const show = pastHero && !formVisible
+  useEffect(() => {
+    const handleSubmitted = () => setSubmitted(true)
+    window.addEventListener("quiz-submitted", handleSubmitted)
+    return () => window.removeEventListener("quiz-submitted", handleSubmitted)
+  }, [])
+
+  const show = pastHero && !formVisible && !submitted
 
   const scrollToForm = () => {
     document.getElementById(targetId)?.scrollIntoView({ behavior: "smooth", block: "start" })

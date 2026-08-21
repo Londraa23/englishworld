@@ -119,6 +119,7 @@ export function QuizForm() {
       if (!ok) return
       fireFbq("track", "Lead")
       setSubmitted(true)
+      window.dispatchEvent(new Event("quiz-submitted"))
       return
     }
   }
