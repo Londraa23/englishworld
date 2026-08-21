@@ -147,7 +147,7 @@ export function QuizForm() {
             ¡Perfecto, {formData.nombre.split(" ")[0]}!
           </motion.h2>
           <motion.p initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.6 }} className="font-dm-sans text-navy/55 text-base leading-relaxed">
-            Ya tenemos tus datos. Te llamamos en menos de 24h.<br />
+            Te llamaremos para darte más información durante las próximas 24 horas.<br />
             <span className="text-red font-medium">¡Bienvenido/a a English World!</span>
           </motion.p>
 
