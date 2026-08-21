@@ -46,7 +46,7 @@ export default function LeadPage() {
 
       {/* Minimal branded header — logo only, no site nav, to keep the page focused for ad traffic */}
       <div className="relative z-10 flex justify-center pt-6">
-        <Link href="/" className="flex items-center gap-2">
+        <Link href="/" prefetch={false} className="flex items-center gap-2">
           <div className="relative w-7 h-7 shrink-0">
             <Image src="/logo-transparent.png" alt="English World" fill sizes="28px" className="object-contain" priority />
           </div>

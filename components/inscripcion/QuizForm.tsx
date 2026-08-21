@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect, useRef } from "react"
+import Link from "next/link"
 import { motion, AnimatePresence } from "framer-motion"
 import { ChevronRight, ChevronLeft, CheckCircle2, Sparkles, Phone } from "lucide-react"
 import { Stepper } from "./Stepper"
@@ -39,6 +40,8 @@ function fireFbq(event: "track" | "trackCustom", name: string) {
   const fbq = (window as unknown as { fbq?: (...args: unknown[]) => void }).fbq
   if (fbq) fbq(event, name)
 }
+
+const DISCOUNT_DEADLINE = new Date("2026-09-15T23:59:59+02:00")
 
 /* ─────────────────────── Component ─────────────────────── */
 
@@ -181,7 +184,9 @@ export function QuizForm() {
           <span className="relative inline-flex rounded-full h-2 w-2 bg-red" />
         </span>
         <p className="font-dm-sans text-xs sm:text-[13px] text-red leading-snug">
-          Plazas limitadas para el curso 2026-27 · Matrícula con descuento hasta el 15 de septiembre
+          {new Date() <= DISCOUNT_DEADLINE
+            ? "Plazas limitadas para el curso 2026-27 · Matrícula con descuento hasta el 15 de septiembre"
+            : "Plazas limitadas para el curso 2026-27"}
         </p>
       </div>
 
@@ -235,7 +240,7 @@ export function QuizForm() {
             {isSubmitting
               ? "Enviando..."
               : currentStep === 1
-                ? "Enviar"
+                ? "Quiero mi plaza"
                 : "Siguiente"}
             {!isSubmitting && <ChevronRight className="w-4 h-4" />}
           </motion.button>
@@ -244,7 +249,8 @@ export function QuizForm() {
       </div>
 
       <p className="mt-3 font-dm-sans text-[10px] text-navy/30 text-center leading-relaxed">
-        🔒 Tus datos están seguros. Solo los usaremos para contactarte.
+        🔒 Tus datos están seguros. Solo los usaremos para contactarte. Consulta
+        nuestra <Link href="/privacidad" prefetch={false} className="underline hover:text-navy/50">política de privacidad</Link>.
       </p>
     </div>
   )
