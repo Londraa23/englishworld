@@ -185,8 +185,8 @@ export function QuizForm() {
         </span>
         <p className="font-dm-sans text-xs sm:text-[13px] text-red leading-snug">
           {new Date() <= DISCOUNT_DEADLINE
-            ? "Plazas limitadas para el curso 2026-27 · Matrícula con descuento hasta el 15 de septiembre"
-            : "Plazas limitadas para el curso 2026-27"}
+            ? "Plazas abiertas para el curso 2026-27 · Descuento en la matrícula hasta el 15 de septiembre"
+            : "Plazas abiertas para el curso 2026-27"}
         </p>
       </div>
 
