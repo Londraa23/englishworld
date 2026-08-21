@@ -38,6 +38,11 @@ export default function LeadPage() {
       <div className="absolute inset-0 noise-overlay pointer-events-none" />
       <div className="absolute inset-0 dot-grid pointer-events-none" />
 
+      {/* Decorative color blobs */}
+      <div className="absolute -top-16 -right-16 w-64 h-64 bg-red/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-52 -left-20 w-56 h-56 bg-sky/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute -top-10 right-24 w-32 h-32 bg-gold/15 rounded-full blur-2xl pointer-events-none" />
+
       {/* Top accent bar */}
       <div className="h-1.5 bg-gradient-to-r from-navy via-red to-sky" />
 
