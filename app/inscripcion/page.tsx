@@ -1,8 +1,13 @@
-import { LeadForm } from "@/components/LeadForm"
 import { Metadata, Viewport } from "next"
 import Link from "next/link"
 import Image from "next/image"
-import { Phone } from "lucide-react"
+import { Phone, Star } from "lucide-react"
+import { QuizForm } from "@/components/inscripcion/QuizForm"
+import { StickyCtaBar } from "@/components/inscripcion/StickyCtaBar"
+import { LazyTestimonials } from "@/components/inscripcion/LazyTestimonials"
+import { FacilitiesSection } from "@/components/FacilitiesSection"
+import { FAQ } from "@/components/FAQ"
+import { testimonialsData } from "@/lib/testimonials"
 
 export const metadata: Metadata = {
   title: "Aprende Inglés en Zaragoza | English World",
@@ -27,9 +32,11 @@ export const viewport: Viewport = {
   initialScale: 1,
 }
 
+const heroTestimonial = testimonialsData[0]
+
 export default function LeadPage() {
   return (
-    <main className="min-h-screen bg-cream relative overflow-hidden">
+    <main className="min-h-screen bg-cream relative overflow-hidden pb-24">
       {/* Subtle background texture */}
       <div className="absolute inset-0 noise-overlay pointer-events-none" />
       <div className="absolute inset-0 dot-grid pointer-events-none" />
@@ -61,8 +68,8 @@ export default function LeadPage() {
         </h1>
 
         <p className="mt-3 font-dm-sans text-navy/55 text-sm sm:text-base max-w-md mx-auto leading-relaxed">
-          Centro Oficial Cambridge en Zaragoza.
-          <br className="sm:hidden" /> Rellena el formulario y te contactamos.
+          ¿Llevas tiempo queriendo aprender inglés en serio, pero nunca
+          encuentras el momento? Empieza en 2 minutos.
         </p>
 
         {/* Trust badges */}
@@ -81,12 +88,32 @@ export default function LeadPage() {
             </span>
           ))}
         </div>
+
+        {/* Inline social proof — visible without scrolling past the quiz */}
+        <div className="mt-6 max-w-sm mx-auto bg-white/70 backdrop-blur-sm border border-sand rounded-2xl px-4 py-3 text-left">
+          <div className="flex items-center gap-1 mb-1.5">
+            {[...Array(5)].map((_, i) => (
+              <Star key={i} className="w-3.5 h-3.5 fill-gold text-gold" />
+            ))}
+          </div>
+          <p className="font-dm-sans text-xs text-navy/60 leading-relaxed line-clamp-2">
+            &ldquo;{heroTestimonial.quote}&rdquo;
+          </p>
+          <p className="mt-1 font-dm-mono text-[10px] text-navy/35">
+            {heroTestimonial.name} · Reseña en Google
+          </p>
+        </div>
       </header>
 
-      {/* Form */}
-      <section className="relative z-10 pb-12">
-        <LeadForm />
+      {/* Quiz form */}
+      <section className="relative z-10 pb-4">
+        <QuizForm />
       </section>
+
+      {/* Below-the-fold trust content for scroll-first visitors */}
+      <FacilitiesSection />
+      <LazyTestimonials />
+      <FAQ />
 
       {/* Minimal footer — legal links + contact only, no site nav, same reasoning as the header */}
       <footer className="relative z-10 border-t border-navy/10 px-6 py-6">
@@ -114,6 +141,8 @@ export default function LeadPage() {
           </p>
         </div>
       </footer>
+
+      <StickyCtaBar />
     </main>
   )
 }

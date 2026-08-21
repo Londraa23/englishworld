@@ -83,8 +83,9 @@ export function EnrollmentPopup() {
                   </Dialog.Title>
 
                   <Dialog.Description className="font-dm-sans text-navy/60 text-sm sm:text-base leading-relaxed mb-8">
-                    Cuéntanos qué nivel buscas y te contactamos enseguida por
-                    WhatsApp para reservar tu plaza en English World.
+                    Cuéntanos qué nivel buscas y te llamamos en menos de 24h
+                    para reservar tu plaza en English World. También puedes
+                    escribirnos directamente por WhatsApp.
                   </Dialog.Description>
 
                   <div className="flex flex-col sm:flex-row gap-3">

@@ -4,11 +4,22 @@ import { google } from "googleapis"
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json()
-    const { nombre, telefono, haEstudiadoIngles, nivel } = body as {
+    const {
+      nombre, telefono, haEstudiadoIngles, nivel,
+      paraQuien, cuando, estado,
+      fbclid, utmSource, utmMedium, utmCampaign,
+    } = body as {
       nombre?: string
       telefono?: string
       haEstudiadoIngles?: string
       nivel?: string
+      paraQuien?: string
+      cuando?: string
+      estado?: string
+      fbclid?: string
+      utmSource?: string
+      utmMedium?: string
+      utmCampaign?: string
     }
 
     if (!nombre?.trim() || !telefono?.trim()) {
@@ -33,7 +44,7 @@ export async function POST(req: NextRequest) {
 
     await sheets.spreadsheets.values.append({
       spreadsheetId,
-      range: "Leads!A:E",
+      range: "Leads!A:L",
       valueInputOption: "USER_ENTERED",
       requestBody: {
         values: [[
@@ -42,6 +53,13 @@ export async function POST(req: NextRequest) {
           telefono,
           haEstudiadoIngles === "si" ? "Sí" : "No",
           nivel || "",
+          paraQuien || "",
+          cuando || "",
+          estado || "",
+          fbclid || "",
+          utmSource || "",
+          utmMedium || "",
+          utmCampaign || "",
         ]],
       },
     })
