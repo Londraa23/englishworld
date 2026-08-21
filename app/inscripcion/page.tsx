@@ -7,6 +7,7 @@ import { StickyCtaBar } from "@/components/inscripcion/StickyCtaBar"
 import { LazyTestimonials } from "@/components/inscripcion/LazyTestimonials"
 import { FacilitiesSection } from "@/components/FacilitiesSection"
 import { FAQ } from "@/components/FAQ"
+import { RingShape, SquareShape, DotCluster } from "@/components/inscripcion/DecorativeShapes"
 
 export const metadata: Metadata = {
   title: "Aprende Inglés en Zaragoza | English World",
@@ -42,6 +43,11 @@ export default function LeadPage() {
       <div className="absolute -top-16 -right-16 w-64 h-64 bg-red/10 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute top-52 -left-20 w-56 h-56 bg-sky/10 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute -top-10 right-24 w-32 h-32 bg-gold/15 rounded-full blur-2xl pointer-events-none" />
+
+      {/* Decorative shapes */}
+      <RingShape color="red" size={90} className="absolute top-16 right-6" />
+      <SquareShape color="gold" size={40} className="absolute top-8 left-8" />
+      <DotCluster color="sky" className="absolute top-64 right-10" />
 
       {/* Top accent bar */}
       <div className="h-1.5 bg-gradient-to-r from-navy via-red to-sky" />
@@ -99,17 +105,27 @@ export default function LeadPage() {
       </header>
 
       {/* Quiz form */}
-      <section className="relative z-10 pb-4">
-        <QuizForm />
+      <section className="relative pb-4 overflow-hidden">
+        <SquareShape color="sky" size={32} className="absolute top-4 -left-3 z-0" />
+        <RingShape color="gold" size={64} className="absolute bottom-8 -right-3 z-0" />
+        <div className="relative z-10">
+          <QuizForm />
+        </div>
       </section>
 
-      {/* Below-the-fold trust content for scroll-first visitors */}
+      {/* Below-the-fold trust content for scroll-first visitors, with colorful dividers
+          between each section (shapes placed *behind* these sections wouldn't be visible
+          since each one paints its own opaque background) */}
       <FacilitiesSection />
+      <div className="h-1.5 bg-gradient-to-r from-gold via-red to-sky" />
       <LazyTestimonials />
+      <div className="h-1.5 bg-gradient-to-r from-sky via-navy to-red" />
       <FAQ />
 
       {/* Minimal footer — legal links + contact only, no site nav, same reasoning as the header */}
-      <footer className="relative z-10 border-t border-navy/10 px-6 py-6">
+      <footer className="relative z-10 border-t border-navy/10 px-6 py-6 overflow-hidden">
+        <RingShape color="sky" size={70} className="absolute -bottom-6 -right-6" />
+        <SquareShape color="gold" size={28} className="absolute top-2 -left-2" />
         <div className="max-w-md mx-auto flex flex-col items-center gap-3 text-center">
           <span className="flex items-center gap-2 font-dm-sans text-sm text-navy/60">
             <MapPin className="w-4 h-4 shrink-0" />
