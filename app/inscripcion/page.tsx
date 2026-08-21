@@ -85,6 +85,12 @@ export default function LeadPage() {
             </span>
           ))}
         </div>
+
+        {/* Address — shown up top since "Zaragoza" alone doesn't tell visitors how close it is */}
+        <p className="mt-4 flex items-center justify-center gap-1.5 font-dm-sans text-xs text-navy/45">
+          <MapPin className="w-3.5 h-3.5 shrink-0" />
+          Calle Celso Emilio Ferreiro 17, Zaragoza
+        </p>
       </header>
 
       {/* Quiz form */}
