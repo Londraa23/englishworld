@@ -232,7 +232,7 @@ export function Hero() {
 
   const trustItems = [
     "Profesores nativos",
-    "Grupos máx. 10",
+    "Grupos máx. 8",
     "Cambridge Official",
   ]
 

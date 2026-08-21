@@ -7,7 +7,7 @@ const reasons = [
   {
     icon: Users,
     title: "Grupos reducidos",
-    body: "Máximo 8–10 alumnos por grupo, para que cada niño/a reciba atención personalizada.",
+    body: "Máximo 8 alumnos por grupo, para que cada niño/a reciba atención personalizada.",
     color: "text-red",
     bg: "bg-red/10",
   },

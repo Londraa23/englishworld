@@ -51,7 +51,7 @@ export async function POST(req: NextRequest) {
           new Date().toISOString(),
           nombre,
           telefono,
-          haEstudiadoIngles === "si" ? "Sí" : "No",
+          haEstudiadoIngles === "si" ? "Sí" : haEstudiadoIngles === "no" ? "No" : "",
           nivel || "",
           paraQuien || "",
           cuando || "",

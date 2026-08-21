@@ -136,7 +136,7 @@ export function LevelsGrid() {
               </div>
 
               <p className="font-dm-sans text-xs opacity-50 mt-4">
-                Curso completo octubre–junio · 2–3 sesiones semanales de 90 minutos · también intensivos de verano
+                Curso completo septiembre–junio · 2–3 sesiones semanales de 60 minutos
               </p>
             </motion.div>
           ))}

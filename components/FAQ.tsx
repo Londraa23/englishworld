@@ -8,7 +8,7 @@ import { ChevronDown } from "lucide-react"
 const faqs = [
   {
     question: "¿Cuánto duran los cursos?",
-    answer: "Nuestros cursos siguen el calendario escolar, de octubre a junio, con 2–3 sesiones semanales de 90 minutos. También ofrecemos cursos intensivos de verano de 2 y 4 semanas.",
+    answer: "Nuestros cursos siguen el calendario escolar, de septiembre a junio, con 2–3 sesiones semanales de 60 minutos.",
   },
   {
     question: "¿Cómo puedo conocer mi nivel?",
@@ -16,7 +16,7 @@ const faqs = [
   },
   {
     question: "¿Cuál es el tamaño de los grupos?",
-    answer: "Máximo 8–10 alumnos por grupo. Así garantizamos atención personalizada, participación activa y mucha práctica oral en cada clase.",
+    answer: "Máximo 8 alumnos por grupo. Así garantizamos atención personalizada, participación activa y mucha práctica oral en cada clase.",
   },
   {
     question: "¿Preparan para todos los exámenes Cambridge?",

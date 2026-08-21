@@ -4,7 +4,7 @@ import { motion } from "framer-motion"
 
 const stats = [
   { label: "Alumnos al año", value: "200+", bg: "bg-navy", text: "text-white" },
-  { label: "Alumnos por grupo", value: "8–10", bg: "bg-red", text: "text-white" },
+  { label: "Alumnos por grupo", value: "8", bg: "bg-red", text: "text-white" },
   { label: "Niveles disponibles", value: "A2–C2", bg: "bg-gold", text: "text-navy" },
   { label: "Centro Oficial Cambridge", value: "100%", bg: "bg-sky", text: "text-white" },
 ]

@@ -2,14 +2,12 @@
 
 import { useState, useEffect, useRef } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { ChevronRight, ChevronLeft, CheckCircle2, Sparkles, ArrowRight, Phone } from "lucide-react"
+import { ChevronRight, ChevronLeft, CheckCircle2, Sparkles, Phone } from "lucide-react"
 import { Stepper } from "./Stepper"
 import { FieldError } from "./FieldError"
 import { WhatsAppButton } from "./WhatsAppButton"
 import { StepParaQuien } from "./steps/StepParaQuien"
 import { StepContacto } from "./steps/StepContacto"
-import { StepExperiencia } from "./steps/StepExperiencia"
-import { StepCuando } from "./steps/StepCuando"
 
 /* ─────────────────────── Types ─────────────────────── */
 
@@ -17,25 +15,17 @@ interface FormData {
   paraQuien: "yo" | "hijo" | "adolescente" | ""
   nombre: string
   telefono: string
-  haEstudiadoIngles: "si" | "no" | ""
-  nivel: string
-  cuando: "esta_semana" | "este_mes" | "mirando" | ""
 }
 
 const initialFormData: FormData = {
   paraQuien: "",
   nombre: "",
   telefono: "",
-  haEstudiadoIngles: "",
-  nivel: "",
-  cuando: "",
 }
 
 const steps = [
   { id: "quien", label: "Quién" },
   { id: "contacto", label: "Contacto" },
-  { id: "experiencia", label: "Experiencia" },
-  { id: "cuando", label: "Cuándo" },
 ]
 
 const slideVariants = {
@@ -69,9 +59,7 @@ export function QuizForm() {
   const [direction, setDirection] = useState(0)
   const [errors, setErrors] = useState<Record<string, string>>({})
   const [isSubmitting, setIsSubmitting] = useState(false)
-  const [phase, setPhase] = useState<"form" | "done">("form")
-  const [enriched, setEnriched] = useState(false)
-  const [quizStartedFired, setQuizStartedFired] = useState(false)
+  const [submitted, setSubmitted] = useState(false)
 
   const update = (field: keyof FormData, value: string) => {
     setFormData((prev) => ({ ...prev, [field]: value }))
@@ -89,24 +77,18 @@ export function QuizForm() {
       else if (!/^[0-9+\-\s]{6,15}$/.test(formData.telefono.trim()))
         e.telefono = "Introduce un número válido"
     }
-    if (currentStep === 2) {
-      if (!formData.haEstudiadoIngles) e.haEstudiadoIngles = "Selecciona una opción"
-    }
-    if (currentStep === 3) {
-      if (!formData.cuando) e.cuando = "Selecciona una opción"
-    }
     setErrors(e)
     return Object.keys(e).length === 0
   }
 
-  const submitLead = async (estado: "Parcial" | "Completo"): Promise<boolean> => {
+  const submitLead = async (): Promise<boolean> => {
     try {
       const res = await fetch("/api/submit-form", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           ...formData,
-          estado,
+          estado: "Completo",
           ...trackingParams.current,
         }),
       })
@@ -124,10 +106,7 @@ export function QuizForm() {
     if (!validateStep()) return
 
     if (currentStep === 0) {
-      if (!quizStartedFired) {
-        fireFbq("trackCustom", "QuizStarted")
-        setQuizStartedFired(true)
-      }
+      fireFbq("trackCustom", "QuizStarted")
       setDirection(1)
       setCurrentStep(1)
       return
@@ -135,29 +114,11 @@ export function QuizForm() {
 
     if (currentStep === 1) {
       setIsSubmitting(true)
-      const ok = await submitLead("Parcial")
+      const ok = await submitLead()
       setIsSubmitting(false)
       if (!ok) return
       fireFbq("track", "Lead")
-      setPhase("done")
-      setEnriched(false)
-      return
-    }
-
-    if (currentStep === 2) {
-      setDirection(1)
-      setCurrentStep(3)
-      return
-    }
-
-    if (currentStep === 3) {
-      setIsSubmitting(true)
-      const ok = await submitLead("Completo")
-      setIsSubmitting(false)
-      if (!ok) return
-      fireFbq("trackCustom", "LeadEnriquecido")
-      setPhase("done")
-      setEnriched(true)
+      setSubmitted(true)
       return
     }
   }
@@ -167,14 +128,8 @@ export function QuizForm() {
     setCurrentStep((s) => Math.max(s - 1, 0))
   }
 
-  const continueEnrichment = () => {
-    setPhase("form")
-    setDirection(1)
-    setCurrentStep(2)
-  }
-
-  /* ── Done screen (reached after partial capture, or after full completion) ── */
-  if (phase === "done") {
+  /* ── Success screen ── */
+  if (submitted) {
     return (
       <div className="flex items-center justify-center px-6 py-16">
         <motion.div initial={{ scale: 0.85, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ type: "spring", damping: 15 }} className="text-center max-w-sm mx-auto relative">
@@ -192,19 +147,7 @@ export function QuizForm() {
             <span className="text-red font-medium">¡Bienvenido/a a English World!</span>
           </motion.p>
 
-          {!enriched && (
-            <motion.button
-              initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.75 }}
-              whileTap={{ scale: 0.97 }}
-              onClick={continueEnrichment}
-              className="mt-6 w-full flex items-center justify-center gap-2 bg-cream border border-sand text-navy font-satoshi font-semibold text-sm py-3 rounded-xl transition-colors hover:border-navy/20"
-            >
-              Cuéntanos un poco más para preparar tu clase ideal
-              <ArrowRight className="w-4 h-4" />
-            </motion.button>
-          )}
-
-          <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.85 }} className="mt-6 flex flex-col sm:flex-row gap-3">
+          <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.75 }} className="mt-6 flex flex-col sm:flex-row gap-3">
             <WhatsAppButton className="flex-1 flex items-center justify-center gap-2 bg-emerald-500 text-white font-satoshi font-bold text-sm py-3 rounded-xl shadow-lg shadow-emerald-500/20 hover:bg-emerald-500/90 transition-colors">
               Escríbenos por WhatsApp
             </WhatsAppButton>
@@ -267,18 +210,6 @@ export function QuizForm() {
                   errors={{ nombre: errors.nombre, telefono: errors.telefono }}
                 />
               )}
-              {currentStep === 2 && (
-                <StepExperiencia
-                  haEstudiadoIngles={formData.haEstudiadoIngles}
-                  nivel={formData.nivel}
-                  onChangeHaEstudiado={(v) => { update("haEstudiadoIngles", v); if (v === "no") update("nivel", "") }}
-                  onChangeNivel={(v) => update("nivel", v)}
-                  error={errors.haEstudiadoIngles}
-                />
-              )}
-              {currentStep === 3 && (
-                <StepCuando value={formData.cuando} onChange={(v) => update("cuando", v)} error={errors.cuando} />
-              )}
             </motion.div>
           </AnimatePresence>
         </div>
@@ -302,11 +233,9 @@ export function QuizForm() {
           >
             {isSubmitting
               ? "Enviando..."
-              : currentStep === 3
-                ? "Finalizar"
-                : currentStep === 1
-                  ? "Continuar"
-                  : "Siguiente"}
+              : currentStep === 1
+                ? "Enviar"
+                : "Siguiente"}
             {!isSubmitting && <ChevronRight className="w-4 h-4" />}
           </motion.button>
         </div>
