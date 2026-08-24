@@ -5,32 +5,13 @@ import { NinosHero } from "@/components/NinosHero"
 import { NinosLevels } from "@/components/NinosLevels"
 import { NinosWhy } from "@/components/NinosWhy"
 import { NinosCTA } from "@/components/NinosCTA"
-import { organizationJsonLd } from "@/lib/organization"
+import { getOrganizationJsonLd } from "@/lib/organization"
 
 const yleCourses = [
   { level: "Starters", age: "6-7", desc: "El primer contacto con el inglés en formato de examen: vocabulario básico y familiarización con el idioma de forma lúdica." },
   { level: "Movers", age: "8-9", desc: "Comunicación en situaciones cotidianas sencillas: presentarse, hablar de la familia, describir imágenes." },
   { level: "Flyers", age: "10-12", desc: "El nivel más alto de los Young Learners English de Cambridge, la antesala del A2 Key." },
 ]
-
-const yleJsonLd = yleCourses.map((c) => ({
-  "@context": "https://schema.org",
-  "@type": "Course",
-  name: `Cambridge English ${c.level} (Young Learners)`,
-  description: c.desc,
-  inLanguage: "en",
-  typicalAgeRange: c.age,
-  provider: organizationJsonLd,
-  hasCourseInstance: {
-    "@type": "CourseInstance",
-    courseMode: "Onsite",
-    location: {
-      "@type": "Place",
-      name: "English World",
-      address: organizationJsonLd.address,
-    },
-  },
-}))
 
 export const metadata = {
   title: "Inglés para Niños en Zaragoza | English World",
@@ -56,6 +37,26 @@ export const metadata = {
 }
 
 export default function InglesParaNinosPage() {
+  const organizationJsonLd = getOrganizationJsonLd()
+  const yleJsonLd = yleCourses.map((c) => ({
+    "@context": "https://schema.org",
+    "@type": "Course",
+    name: `Cambridge English ${c.level} (Young Learners)`,
+    description: c.desc,
+    inLanguage: "en",
+    typicalAgeRange: c.age,
+    provider: organizationJsonLd,
+    hasCourseInstance: {
+      "@type": "CourseInstance",
+      courseMode: "Onsite",
+      location: {
+        "@type": "Place",
+        name: "English World",
+        address: organizationJsonLd.address,
+      },
+    },
+  }))
+
   return (
     <main className="bg-night">
       <script

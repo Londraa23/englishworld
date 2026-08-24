@@ -8,7 +8,7 @@ import { Testimonials } from "@/components/Testimonials"
 import { FAQ } from "@/components/FAQ"
 import { FinalCTA } from "@/components/FinalCTA"
 import { Footer } from "@/components/Footer"
-import { organizationJsonLd } from "@/lib/organization"
+import { getOrganizationJsonLd } from "@/lib/organization"
 import { testimonialsData } from "@/lib/testimonials"
 
 export const metadata = {
@@ -37,7 +37,7 @@ export const metadata = {
 export default function Home() {
   const jsonLd = {
     "@context": "https://schema.org",
-    ...organizationJsonLd,
+    ...getOrganizationJsonLd(),
     review: testimonialsData.map((t) => ({
       "@type": "Review",
       reviewRating: {

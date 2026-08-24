@@ -7,7 +7,7 @@ import { TeamSection } from "@/components/TeamSection"
 import { FacilitiesSection } from "@/components/FacilitiesSection"
 import { ValuesSection } from "@/components/ValuesSection"
 import { NosotrosCTA } from "@/components/NosotrosCTA"
-import { organizationJsonLd } from "@/lib/organization"
+import { getOrganizationJsonLd } from "@/lib/organization"
 
 export const metadata = {
   title: "Quiénes Somos | English World Zaragoza",
@@ -35,7 +35,7 @@ export const metadata = {
 export default function NosotrosPage() {
   const jsonLd = {
     "@context": "https://schema.org",
-    ...organizationJsonLd,
+    ...getOrganizationJsonLd(),
     description:
       "Academia de inglés y Centro Preparador Oficial Cambridge en Zaragoza, con profesores nativos y grupos reducidos.",
   }

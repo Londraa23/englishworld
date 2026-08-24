@@ -4,7 +4,7 @@ import { Footer } from "@/components/Footer"
 import { ContactoHero } from "@/components/ContactoHero"
 import { ContactSection } from "@/components/ContactSection"
 import { MapSection } from "@/components/MapSection"
-import { organizationJsonLd } from "@/lib/organization"
+import { getOrganizationJsonLd } from "@/lib/organization"
 
 export const metadata = {
   title: "Contacto | English World Academia de Inglés Zaragoza",
@@ -30,6 +30,7 @@ export const metadata = {
 }
 
 export default function ContactoPage() {
+  const organizationJsonLd = getOrganizationJsonLd()
   const jsonLd = {
     "@context": "https://schema.org",
     ...organizationJsonLd,

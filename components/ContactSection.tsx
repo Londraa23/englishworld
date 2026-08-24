@@ -3,8 +3,10 @@
 import { useState } from "react"
 import { motion } from "framer-motion"
 import { Send, MapPin, Phone, Mail, Clock } from "lucide-react"
+import { getSchedule } from "@/lib/schedule"
 
 export function ContactSection() {
+  const schedule = getSchedule()
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -139,7 +141,7 @@ export function ContactSection() {
               <div>
                 <h3 className="font-satoshi font-bold text-xl mb-1">Llámanos</h3>
                 <p className="font-satoshi font-bold text-2xl tracking-tight">651 85 99 39</p>
-                <p className="font-dm-sans text-xs opacity-50 mt-2">Lunes a Viernes 9:00 – 21:00</p>
+                <p className="font-dm-sans text-xs opacity-50 mt-2">{schedule.days} {schedule.hours}</p>
               </div>
             </motion.div>
 
@@ -172,8 +174,8 @@ export function ContactSection() {
               </div>
               <div>
                 <h3 className="font-satoshi font-bold text-xl mb-1">Horario de atención</h3>
-                <p className="font-dm-sans text-sm font-medium">Lunes a Viernes</p>
-                <p className="font-satoshi font-bold text-xl">9:00 – 21:00</p>
+                <p className="font-dm-sans text-sm font-medium">{schedule.days}</p>
+                <p className="font-satoshi font-bold text-xl">{schedule.hours}</p>
               </div>
             </motion.div>
           </div>

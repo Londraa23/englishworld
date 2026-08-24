@@ -5,7 +5,7 @@ import { ExamsHero } from "@/components/ExamsHero"
 import { ExamsGrid } from "@/components/ExamsGrid"
 import { PreparationSection } from "@/components/PreparationSection"
 import { CalendarSection } from "@/components/CalendarSection"
-import { organizationJsonLd } from "@/lib/organization"
+import { getOrganizationJsonLd } from "@/lib/organization"
 
 const exams = [
   { level: "A2", name: "A2 Key", desc: "El primer paso oficial. Reconocido internacionalmente para demostrar habilidades en inglés básico." },
@@ -14,25 +14,6 @@ const exams = [
   { level: "C1", name: "C1 Advanced (CAE)", desc: "Para quienes necesitan demostrar un dominio avanzado en contextos académicos o profesionales." },
   { level: "C2", name: "C2 Proficiency (CPE)", desc: "La certificación más prestigiosa de Cambridge. Equivalente al nivel nativo." },
 ]
-
-const examsJsonLd = exams.map((e) => ({
-  "@context": "https://schema.org",
-  "@type": "Course",
-  name: `Preparación Cambridge ${e.name}`,
-  description: e.desc,
-  inLanguage: "en",
-  educationalLevel: e.level,
-  provider: organizationJsonLd,
-  hasCourseInstance: {
-    "@type": "CourseInstance",
-    courseMode: "Onsite",
-    location: {
-      "@type": "Place",
-      name: "English World",
-      address: organizationJsonLd.address,
-    },
-  },
-}))
 
 export const metadata = {
   title: "Exámenes Cambridge | Centro Oficial | English World",
@@ -58,6 +39,26 @@ export const metadata = {
 }
 
 export default function ExamsPage() {
+  const organizationJsonLd = getOrganizationJsonLd()
+  const examsJsonLd = exams.map((e) => ({
+    "@context": "https://schema.org",
+    "@type": "Course",
+    name: `Preparación Cambridge ${e.name}`,
+    description: e.desc,
+    inLanguage: "en",
+    educationalLevel: e.level,
+    provider: organizationJsonLd,
+    hasCourseInstance: {
+      "@type": "CourseInstance",
+      courseMode: "Onsite",
+      location: {
+        "@type": "Place",
+        name: "English World",
+        address: organizationJsonLd.address,
+      },
+    },
+  }))
+
   return (
     <main className="bg-night">
       <script

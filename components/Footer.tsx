@@ -1,6 +1,7 @@
 import Link from "next/link"
 import Image from "next/image"
 import { MapPin, Phone, Mail, Clock } from "lucide-react"
+import { getSchedule } from "@/lib/schedule"
 
 const navLinks = [
   { href: "/", label: "Inicio" },
@@ -13,6 +14,7 @@ const navLinks = [
 
 export function Footer() {
   const year = new Date().getFullYear()
+  const schedule = getSchedule()
 
   return (
     <footer className="bg-navy text-white relative overflow-hidden">
@@ -78,7 +80,7 @@ export function Footer() {
               </li>
               <li className="flex items-center gap-3">
                 <Clock className="w-4 h-4 shrink-0 text-gold" />
-                <span>Lunes a Viernes, 9:00 – 21:00</span>
+                <span>{schedule.days}, {schedule.hours}</span>
               </li>
             </ul>
           </div>

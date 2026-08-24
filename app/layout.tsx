@@ -34,6 +34,8 @@ export const metadata: Metadata = {
   },
 }
 
+export const revalidate = 3600
+
 export const viewport: Viewport = {
   themeColor: '#002868',
   width: 'device-width',

@@ -1,3 +1,5 @@
+import { getSchedule } from "@/lib/schedule"
+
 export const organizationJsonLd = {
   "@id": "https://www.academiaenglishworld.com/#organization",
   "@type": ["EducationalOrganization", "LocalBusiness"],
@@ -21,5 +23,11 @@ export const organizationJsonLd = {
   },
   hasMap: "https://www.google.com/maps?cid=7969821074634968875",
   sameAs: ["https://www.google.com/maps?cid=7969821074634968875"],
-  openingHours: "Mo-Fr 09:00-21:00",
+}
+
+export function getOrganizationJsonLd(now: Date = new Date()) {
+  return {
+    ...organizationJsonLd,
+    openingHours: getSchedule(now).openingHours,
+  }
 }
