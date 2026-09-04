@@ -6,6 +6,7 @@ import { QuizForm } from "@/components/inscripcion/QuizForm"
 import { StickyCtaBar } from "@/components/inscripcion/StickyCtaBar"
 import { LazyTestimonials } from "@/components/inscripcion/LazyTestimonials"
 import { FacilitiesSection } from "@/components/FacilitiesSection"
+import { InscripcionMapSection } from "@/components/inscripcion/MapSection"
 import { FAQ } from "@/components/FAQ"
 import { RingShape, SquareShape, DotCluster } from "@/components/inscripcion/DecorativeShapes"
 
@@ -121,6 +122,8 @@ export default function LeadPage() {
       <LazyTestimonials />
       <div className="h-1.5 bg-gradient-to-r from-sky via-navy to-red" />
       <FAQ />
+      <div className="h-1.5 bg-gradient-to-r from-red via-gold to-navy" />
+      <InscripcionMapSection />
 
       {/* Minimal footer — legal links + contact only, no site nav, same reasoning as the header */}
       <footer className="relative z-10 border-t border-navy/10 px-6 py-6 overflow-hidden">
