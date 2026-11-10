@@ -10,13 +10,15 @@ import { X, ArrowRight, Sparkles } from "lucide-react"
 const DISMISS_KEY = "ew_enrollment_popup_dismissed_at"
 const DISMISS_DAYS = 7
 const SHOW_DELAY_MS = 10000
+// Ad landing pages: the student popup would compete with their own form
+const HIDDEN_ON = ["/inscripcion", "/profesores"]
 
 export function EnrollmentPopup() {
   const pathname = usePathname()
   const [open, setOpen] = useState(false)
 
   useEffect(() => {
-    if (pathname === "/inscripcion") return
+    if (HIDDEN_ON.includes(pathname)) return
 
     const dismissedAt = Number(localStorage.getItem(DISMISS_KEY) || 0)
     const daysSince = (Date.now() - dismissedAt) / (1000 * 60 * 60 * 24)
@@ -31,7 +33,7 @@ export function EnrollmentPopup() {
     setOpen(false)
   }
 
-  if (pathname === "/inscripcion") return null
+  if (HIDDEN_ON.includes(pathname)) return null
 
   return (
     <Dialog.Root open={open} onOpenChange={(v) => (v ? setOpen(true) : dismiss())}>
