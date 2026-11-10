@@ -15,7 +15,6 @@ interface FormData {
   email: string
   telefono: string
   nacionalidad: string
-  zaragoza: string
   experiencia: string
   titulacion: string[]
   cambridge: string
@@ -31,7 +30,6 @@ const initialFormData: FormData = {
   email: "",
   telefono: "",
   nacionalidad: "",
-  zaragoza: "",
   experiencia: "",
   titulacion: [],
   cambridge: "",
@@ -125,7 +123,6 @@ export function TeacherForm() {
       if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email.trim())) e.email = "Please enter a valid email"
       if (!/^[0-9+\-\s()]{6,20}$/.test(formData.telefono.trim())) e.telefono = "Please enter a valid phone number"
       if (!formData.nacionalidad.trim()) e.nacionalidad = "Where are you from?"
-      if (!formData.zaragoza) e.zaragoza = "Choose an option"
     }
     if (currentStep === 1) {
       if (formData.disponibilidad.length === 0) e.disponibilidad = "Tap the slots when you could teach"
@@ -278,19 +275,6 @@ export function TeacherForm() {
                         className={`${inputClass(errors.nacionalidad)} pl-10 pr-3`} />
                     </div>
                     <FieldError message={errors.nacionalidad} />
-                  </div>
-
-                  <div>
-                    <Label required>Do you live in Zaragoza?</Label>
-                    <div className="grid grid-cols-3 gap-2">
-                      {["Yes", "Moving soon", "No"].map((opt) => (
-                        <motion.button key={opt} type="button" whileTap={{ scale: 0.97 }} onClick={() => update("zaragoza", opt)}
-                          className={chipClass(formData.zaragoza === opt)}>
-                          {opt}
-                        </motion.button>
-                      ))}
-                    </div>
-                    <FieldError message={errors.zaragoza} />
                   </div>
                 </div>
               )}

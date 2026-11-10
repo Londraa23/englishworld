@@ -8,7 +8,7 @@ export const runtime = "nodejs"
 
 const SHEET = "Profesores"
 const HEADER = [
-  "Fecha", "Nombre", "Email", "Teléfono", "Nacionalidad", "Vive en Zaragoza",
+  "Fecha", "Nombre", "Email", "Teléfono", "Nacionalidad",
   "Experiencia", "Titulación", "Experiencia Cambridge", "Disponibilidad", "Horas/semana",
   "Incorporación", "Mensaje", "CV", "fbclid", "utm_source", "utm_medium", "utm_campaign",
 ]
@@ -85,7 +85,7 @@ export async function POST(req: NextRequest) {
     const origin = req.headers.get("origin") || req.nextUrl.origin
     await sheets.spreadsheets.values.append({
       spreadsheetId,
-      range: `${SHEET}!A:R`,
+      range: `${SHEET}!A:Q`,
       // RAW so a candidate can't inject spreadsheet formulas through the form
       valueInputOption: "RAW",
       requestBody: {
@@ -95,7 +95,6 @@ export async function POST(req: NextRequest) {
           email,
           telefono,
           text(form, "nacionalidad", 80),
-          text(form, "zaragoza", 40),
           text(form, "experiencia", 40),
           text(form, "titulacion", 200),
           text(form, "cambridge", 10),
