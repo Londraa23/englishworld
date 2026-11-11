@@ -15,6 +15,7 @@ interface FormData {
   email: string
   telefono: string
   nacionalidad: string
+  edad: string
   experiencia: string
   titulacion: string[]
   cambridge: string
@@ -30,6 +31,7 @@ const initialFormData: FormData = {
   email: "",
   telefono: "",
   nacionalidad: "",
+  edad: "",
   experiencia: "",
   titulacion: [],
   cambridge: "",
@@ -275,6 +277,14 @@ export function TeacherForm() {
                         className={`${inputClass(errors.nacionalidad)} pl-10 pr-3`} />
                     </div>
                     <FieldError message={errors.nacionalidad} />
+                  </div>
+
+                  <div>
+                    <Label htmlFor="t-edad">How old are you?</Label>
+                    <input id="t-edad" type="text" inputMode="numeric" maxLength={2} placeholder="e.g. 28"
+                      value={formData.edad} onChange={(e) => update("edad", e.target.value.replace(/\D/g, ""))}
+                      className={`${inputClass()} px-3`} />
+                    <p className="font-dm-sans text-xs text-navy/45 mt-1.5">Optional, but it helps us match you with the right groups 🙂</p>
                   </div>
                 </div>
               )}
